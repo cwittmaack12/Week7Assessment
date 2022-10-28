@@ -1,0 +1,28 @@
+Array               Append              Insert
+
+
+extraLarge          3.9994 ms           799.3727 ms
+
+largeArray          504.5 μs            8.4098 ms
+
+mediumArray         229.6 μs            285.6 μs
+
+smallArray          144.9 μs            59 μs
+
+tinyArray           431 μs              75.3 μs
+
+
+.push appears to scale better for larger processes versus .unshift.  As the results above show when a large number of elements are being processed (100K) the .push method was roughly 27x faster in processing that information.  With that said, as the data set becomes smaller the .unshift function becomes more efficient comparatively. Reducing the data set to 10K now only has the .unshift function perfoming roughly 16x worse than .push.  Somewhere between 100 and 1000 calculation .unshift actually becomes more efficient.  While .unshift may perform better at the smaller ranges the difference is negligible as there is really no difference in 144.9 μs and 59 μs.  All things considered .push is going to scale better as data sets get larger. 
+
+.unshift is so much slower because it's doing so much more.  Rather than just tacking a piece of data on the end of an array (.push) .unshift not only needs to add the value to the front of the array but it also needs to re-assign each and every number already in the array to a new position.  As the number of data elements increases the .unshift function is going to become inreasingly more difficult and thus take longer.  
+
+
+
+
+
+
+
+
+
+
+
